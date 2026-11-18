@@ -26,9 +26,7 @@ function orderwhatsapp(product) {
     const WHATSAPP_NUMBER = "254727500479";
     const name = PRODUCT_NAMES[product] || product;
     const msg = "Hello Rafiki Modern Furnitures, I would like to ask about your " + name + ".";
-    const url = "https://whatsapp.com" + WHATSAPP_NUMBER + "&text=" + encodeURIComponent(msg);
-    
-    window.open(url, "_blank");
+    window.open("https://whatsapp.com" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
