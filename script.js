@@ -1,5 +1,5 @@
 /* ===== WhatsApp number (country code first, digits only) ===== */
-const WHATSAPP_NUMBER = "254727500479";
+;
 
 /* ===== Hamburger (phones) ===== */
 function toggleMenu(e) {
@@ -23,6 +23,7 @@ const PRODUCT_NAMES = {
 };
 
 function orderwhatsapp(product) {
+    const WHATSAPP_NUMBER = "254727500479";
     const name = PRODUCT_NAMES[product] || product;
     const msg = "Hello Rafiki Modern Furnitures, I would like to ask about your " + name + ".";
     window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
