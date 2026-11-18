@@ -1,0 +1,171 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+html, body { margin: 0; padding: 0; width: 100%; }
+body { font-family: Arial, sans-serif; color: #3E281C; background: #FFF1DE; }
+
+/* ================= HEADER ================= */
+.navlinks {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center;
+    width: 100%; padding: 8px 24px;
+    background: linear-gradient(120deg, #5C3825, #8B5A3C);
+    box-shadow: 0 3px 10px rgba(48, 29, 17, 0.25);
+    animation: headerDrop 0.8s ease-out both;
+}
+@keyframes headerDrop {
+    from { transform: translateY(-100%); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+.hamburger {
+    display: none;
+    width: 44px; height: 40px;
+    background: #D6A56D; color: #3E281C;
+    border: none; border-radius: 6px;
+    font-size: 22px; line-height: 1; cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+.hamburger:hover { background: #F2D5B5; }
+.hamburger:active { transform: scale(0.94); }
+
+/* Desktop: links on the left, title on the right */
+.brand {
+    order: 2; margin: 0 0 0 auto;
+    color: #FFF1DE; font-family: Georgia, serif;
+    font-size: 20px; letter-spacing: 1px; white-space: nowrap;
+}
+.menu-links { order: 1; display: flex; align-items: center; gap: 4px; }
+.menu-links a {
+    color: #FFF1DE; text-decoration: none;
+    font-size: 15px; font-weight: 600;
+    padding: 8px 14px; border-radius: 20px;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.menu-links a:hover { background: #D6A56D; color: #3E281C; transform: translateY(-2px); }
+
+/* ================= BANNER ================= */
+.bunner h2 {
+    margin: 0; width: 100%;
+    height: 85vh; min-height: 300px; max-height: 700px;
+    background-color: #5C3825;
+    background-image:
+        linear-gradient(to bottom, rgba(255, 241, 222, 0) 82%, #FFF1DE 100%),
+        linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+        url("images/logo.jpeg");
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 20px; text-align: center;
+    color: #e7ede8; font-family: Georgia, serif;
+    text-transform: uppercase; letter-spacing: 1px;
+    font-size: clamp(26px, 5vw, 46px); line-height: 1.3;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    animation: bannerIn 1.6s ease-out both;
+}
+@keyframes bannerIn {
+    from { letter-spacing: 8px; opacity: 0; }
+    to   { letter-spacing: 1px; opacity: 1; }
+}
+
+/* ================= SHARED SECTIONS ================= */
+.about, .products, .why, .contact, .location { padding: 60px 20px; text-align: center; }
+.about h2, .products > h2, .why h2, .location h2 {
+    margin: 0 0 20px; color: #5C3825;
+    font-family: Georgia, serif; font-size: 34px; letter-spacing: 2px;
+}
+.about h3 { max-width: 700px; margin: 0 auto; font-size: 18px; font-weight: 400; line-height: 1.8; }
+
+/* Scroll reveal: only hidden when JavaScript is running */
+.js .reveal {
+    opacity: 0; transform: translateX(-50px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+.js .reveal.show { opacity: 1; transform: none; }
+.js .card.reveal { transform: translateY(40px); }
+.js .card.reveal.show { transform: none; }
+
+/* Menu click: the chosen section slides up */
+.slide-up { animation: slideUp 0.8s ease-out; }
+@keyframes slideUp {
+    from { transform: translateY(70px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+/* ================= PRODUCTS ================= */
+.products { background: white; }
+.intro { max-width: 650px; margin: 0 auto 34px; line-height: 1.7; font-size: 17px; }
+
+.grid {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 24px;                               /* three per row; the rest appear as you scroll */
+}
+.card {
+    flex: 0 1 calc((100% - 48px) / 3);
+    background: #fff; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 4px 14px rgba(62, 40, 28, 0.15);
+    transition: box-shadow 0.3s;
+}
+.card:hover { box-shadow: 0 10px 22px rgba(62, 40, 28, 0.25); }
+.card h3 { margin: 0; padding: 14px 12px 18px; color: #5C3825; font-size: 18px; }
+
+/* Every picture is exactly the same size */
+.pic { position: relative; width: 100%; aspect-ratio: 4 / 3; background: #e9d7c0; overflow: hidden; }
+.pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* "Ask About": right side of the image, always visible */
+.pic button {
+    position: absolute; right: 10px; bottom: 10px; z-index: 2;
+    background: #D6A56D; color: #3E281C;
+    border: none; border-radius: 20px;
+    padding: 9px 16px; font-size: 14px; font-weight: 700; cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.2s;
+}
+.pic button:hover { background: #F2D5B5; transform: scale(1.06); }
+
+.note { max-width: 700px; margin: 28px auto 0; font-weight: 400; line-height: 1.6; }
+
+/* ================= WHY / CONTACT / LOCATION ================= */
+.why ul, .contact ul { list-style: none; margin: 0 auto; padding: 0; max-width: 520px; }
+.why li { padding: 10px 0; font-size: 18px; font-weight: 600; border-bottom: 1px solid rgba(92, 56, 37, 0.2); }
+.why li::before { content: "✔ "; color: #D6A56D; }
+
+.contact { background: #5C3825; color: #FFF1DE; }
+.contact h2 { margin: 0 0 20px; font-family: Georgia, serif; font-size: 30px; }
+.contact li { padding: 6px 0; font-size: 18px; font-style: italic; }
+
+.location p { max-width: 600px; margin: 0 auto; font-size: 18px; line-height: 1.7; }
+
+/* ================= TABLETS ================= */
+@media (max-width: 900px) {
+    .card { flex-basis: calc((100% - 24px) / 2); }
+}
+
+/* ================= PHONES / SMALL SCREENS: hamburger ================= */
+@media (max-width: 900px) {
+    .navlinks { padding: 8px 14px; }
+    .hamburger { display: block; }
+    .brand { order: 1; margin: 0 0 0 12px; font-size: 17px; white-space: normal; }
+
+    .menu-links {
+        display: none; position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; align-items: stretch; gap: 0;
+        padding: 6px 14px 14px; background: #5C3825;
+        box-shadow: 0 10px 20px rgba(48, 29, 17, 0.35);
+    }
+    .menu-links.open { display: flex; animation: slideUp 0.4s ease-out; }
+    .menu-links a { padding: 13px 12px; font-size: 16px; border-radius: 6px; border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
+
+    .about h2, .products > h2, .why h2, .location h2 { font-size: 27px; }
+    .about h3, .intro { font-size: 16px; }
+}
+
+@media (max-width: 560px) {
+    .card { flex-basis: 100%; }
+    .about, .products, .why, .contact, .location { padding: 45px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .js .reveal { opacity: 1; transform: none; }
+}
